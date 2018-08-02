@@ -19,7 +19,8 @@
     "dev": "fusion dev",
     "test": "fusion test",
     "build": "fusion build",
-    "start": "fusion start"
+    "start": "fusion start",
+    "heroku-postbuild": "fusion build --production"
   },
   "devDependencies": {
     "enzyme": "^3.3.0"
