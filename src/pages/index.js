@@ -9,7 +9,6 @@ import TodoList from '../components/TodoList';
 const Center = styled('div', {
   fontFamily: 'HelveticaNeue-Light, Arial',
   display: 'flex',
-  alignItems: 'center',
   justifyContent: 'center',
   height: '100%',
 });
@@ -29,7 +28,7 @@ const Index = () => {
   return (
     <FullHeightDiv>
       <Helmet>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Shadows+Into+Light" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Shadows+Into+Light|Lobster" rel="stylesheet" />
       </Helmet>
       <style>
         {`
