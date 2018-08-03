@@ -1,5 +1,8 @@
-# Fusion.js application
+#Tofu [tuh-foo]
+## My first fusion-based app
 
-Welcome to your Fusion.js application. Get started by running the application with `yarn dev` in a terminal.
+Check it out at <a href="http://fusionjs.com" target="_blank">http://fusionjs.com</a>
 
-Visit our documentation at: https://fusionjs.com
+### Instructions
+
+Pull the repository and run `yarn dev` in its directory.
