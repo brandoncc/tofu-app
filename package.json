@@ -10,6 +10,7 @@
     "fusion-plugin-react-router": "^1.1.3",
     "fusion-plugin-rpc-redux-react": "^2.0.0",
     "fusion-plugin-styletron-react": "^2.5.0",
+    "fusion-plugin-universal-events": "^1.0.5",
     "fusion-react": "^1.0.5",
     "fusion-react-async": "^1.2.3",
     "fusion-tokens": "^1.0.4",

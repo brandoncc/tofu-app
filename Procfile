@@ -1,1 +1,1 @@
-release: "npm run build --production --dir=/app"
+release: "node_modules/.bin/fusion build --production --dir=/app"
