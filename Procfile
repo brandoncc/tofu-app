@@ -1,1 +1,1 @@
-release: "fusion build --production --dir=/app"
+release: "yarn build --production --dir=/app"
