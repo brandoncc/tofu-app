@@ -1,4 +1,5 @@
 export default async _ctx => ({
   todos: [],
-  newTitle: ''
+  newTitle: '',
+  activeFilter: 'All'
 });
