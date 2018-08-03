@@ -1,6 +1,6 @@
 {
-  "name": "example-fusion-app",
-  "version": "0.0.0",
+  "name": "tofu-app",
+  "version": "0.0.1",
   "main": "index.js",
   "dependencies": {
     "fusion-cli": "^1.8.4",
