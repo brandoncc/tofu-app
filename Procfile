@@ -1,1 +1,1 @@
-release: "yarn build --production --dir=/app"
+release: "npm run build --production --dir=/app"
