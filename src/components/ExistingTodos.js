@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {styled, withStyleDeep} from 'fusion-plugin-styletron-react';
+import {connect} from 'react-redux';
 
 const List = styled('ul', {
   padding: 0,
@@ -40,12 +41,6 @@ const CompletedListItem = withStyleDeep(ListItem, {
   }
 });
 
-const items = [
-  { id: 0, title: 'Go grocery shopping', completed: false },
-  { id: 1, title: 'Wash the car', completed: true },
-  { id: 2, title: 'Clean my room', completed: false },
-];
-
 const listItems = (items) => {
   return items.map((item, index) => {
     const Component = item.completed ? CompletedListItem : IncompleteListItem;
@@ -53,10 +48,10 @@ const listItems = (items) => {
   });
 }
 
-const ExistingTodos = () => {
+const ExistingTodos = ({todos}) => {
   return (
-    <List>{listItems(items)}</List>
+    <List>{listItems(todos)}</List>
   );
 };
 
-export default ExistingTodos;
+export default connect(({todos}) => ({todos}))(ExistingTodos);
