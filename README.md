@@ -1,4 +1,4 @@
-#Tofu [tuh-foo]
+# Tofu [tuh-foo]
 ## My first fusion-based app
 
 Check it out at <a href="http://fusionjs.com" target="_blank">http://fusionjs.com</a>
