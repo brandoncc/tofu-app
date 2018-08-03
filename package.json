@@ -26,7 +26,8 @@
     "dev": "fusion dev",
     "test": "fusion test",
     "build": "fusion build",
-    "start": "fusion start"
+    "start": "fusion start",
+    "heroku-postbuild": "fusion build --production && export BUILD_DIR=\"$(echo $(pwd) | sed 's/\//\\\//g')\" && sed -i \"s/${BUILD_DIR}/\/app/g\" .fusion/dist/production/server/server-main.js"
   },
   "devDependencies": {
     "enzyme": "^3.3.0"
