@@ -70,7 +70,7 @@ const ListItemTitle = styled('div', {
 const listItems = (items = [], toggleHandler, deleteHandler) => {
   return items.map((item, index) => {
     return (
-      <ListItem key={item.id}>
+      <ListItem key={item.id || `index${index}`}>
         <ItemCheckMark $checked={item.completed} onClick={() => toggleHandler({id: item.id})} />
         <ListItemTitle>{item.title}</ListItemTitle>
         <DeleteIcon onClick={() => deleteHandler({id: item.id})} />
