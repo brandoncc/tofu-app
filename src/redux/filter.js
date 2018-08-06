@@ -7,4 +7,4 @@ const choose = createRPCReducer('chooseFilter', {
   failure: state => state
 });
 
-export default reduceReducers(choose, "All");
+export default reduceReducers((state = "All") => state, choose);
