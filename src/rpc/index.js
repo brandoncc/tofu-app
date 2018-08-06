@@ -2,7 +2,7 @@ import {createPlugin} from 'fusion-core';
 import {TodosToken} from '../plugins/todos';
 
 const nextId = (todos = []) => {
-  return Math.max(-1, todos.map(todo => todo.id)) + 1;
+  return Math.max.apply(null, [-1, ...todos.map(todo => todo.id)]) + 1;
 };
 
 export default createPlugin({
