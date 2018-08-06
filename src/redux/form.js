@@ -3,9 +3,7 @@ import reduceReducers from 'reduce-reducers';
 
 const change = createRPCReducer('changeNewTitle', {
   start: state => state,
-  success: (_state, action) => {
-    return action.payload.title;
-  },
+  success: (_state, action) => action.payload.title,
   failure: state => state
 });
 
@@ -15,4 +13,4 @@ const create = createRPCReducer('create', {
   failure: state => state
 });
 
-export default reduceReducers(create, change, "");
+export default reduceReducers((state = "") => state, create, change);

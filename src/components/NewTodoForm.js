@@ -25,12 +25,12 @@ const handleSubmit = (e, handler) => {
 }
 
 
-const NewTodoForm = ({newTitle, create, changeNewTitle}) => {
+const NewTodoForm = ({form, create, changeNewTitle}) => {
   return (
     <Form onSubmit={(e) => {handleSubmit(e, create)}}>
       <FormInput
         type="text"
-        value={newTitle}
+        value={form}
         onChange={(e) => changeNewTitle({title: e.target.value})}
         placeholder="What do you need to do?"
       />
