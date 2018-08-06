@@ -18,25 +18,44 @@ const FormInput = styled('input', {
   fontFamily: "'Shadows Into Light', cursive"
 });
 
-const handleSubmit = (e, handler) => {
-  e.preventDefault();
-  const input = e.target.querySelector('input');
-  handler({title: input.value});
+
+class NewTodoForm extends React.Component {
+  state = {
+    inputValue: ""
+  };
+
+  handleSubmit = (e, handler) => {
+    e.preventDefault();
+    const input = e.target.querySelector('input');
+    handler({title: this.state.inputValue});
+  }
+
+  // If the api call doesn't come back before we submit, we lose the last
+  // character entered. By using the state in tandem we guarantee that won't
+  // happen.
+  handleChange = (e) => {
+    this.setState({
+      inputValue: e.target.value
+    }, () => {
+      this.props.changeNewTitle({title: this.state.inputValue})
+    });
+  }
+
+  render () {
+    const {create, changeNewTitle, form} = this.props;
+
+    return (
+      <Form onSubmit={(e) => {this.handleSubmit(e, create)}}>
+        <FormInput
+          type="text"
+          value={form}
+          onChange={this.handleChange}
+          placeholder="What do you need to do?"
+        />
+      </Form>
+    );
+  }
 }
-
-
-const NewTodoForm = ({form, create, changeNewTitle}) => {
-  return (
-    <Form onSubmit={(e) => {handleSubmit(e, create)}}>
-      <FormInput
-        type="text"
-        value={form}
-        onChange={(e) => changeNewTitle({title: e.target.value})}
-        placeholder="What do you need to do?"
-      />
-    </Form>
-  );
-};
 
 const hoc = compose(
   withRPCRedux('create'),
