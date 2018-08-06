@@ -4,8 +4,7 @@ import {styled} from 'fusion-plugin-styletron-react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 
-import {createReactor} from '../reactors/todos';
-import {newTitleReactor} from '../reactors/form';
+import {withRPCRedux} from 'fusion-plugin-rpc-redux-react';
 
 const Form = styled('form', {
   padding: '20px 15px',
@@ -40,8 +39,8 @@ const NewTodoForm = ({newTitle, create, changeNewTitle}) => {
 };
 
 const hoc = compose(
-  createReactor,
-  newTitleReactor,
-  connect(({newTitle}) => ({newTitle}))
+  withRPCRedux('create'),
+  withRPCRedux('changeNewTitle'),
+  connect(({form}) => ({form}))
 );
 export default hoc(NewTodoForm);

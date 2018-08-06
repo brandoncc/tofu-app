@@ -5,8 +5,7 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 
 import {all, incomplete, completed} from '../selectors/todos';
-import {clearCompletedReactor} from '../reactors/todos';
-import {chooseReactor} from '../reactors/filters';
+import {withRPCRedux} from 'fusion-plugin-rpc-redux-react';
 
 const FiltersContainer = styled('div', {
   borderTop: '1px solid black',
@@ -94,14 +93,14 @@ const Filters = ({allCount, incompleteCount, completeCount, clearCompleted, choo
 };
 
 const hoc = compose(
-  clearCompletedReactor,
-  chooseReactor,
+  withRPCRedux('clearCompleted'),
+  withRPCRedux('chooseFilter'),
   connect(
     (state) => ({
       allCount: all(state).length,
       incompleteCount: incomplete(state).length,
       completeCount: completed(state).length,
-      activeFilter: state.activeFilter
+      activeFilter: state.filter
     })
   )
 );

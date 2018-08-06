@@ -4,8 +4,8 @@ import {styled} from 'fusion-plugin-styletron-react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 
-import {toggleReactor, deleteReactor} from '../reactors/todos';
 import {all, incomplete, completed} from '../selectors/todos';
+import {withRPCRedux} from 'fusion-plugin-rpc-redux-react';
 
 const List = styled('ul', {
   padding: 0,
@@ -67,7 +67,7 @@ const ListItemTitle = styled('div', {
   width: '100%'
 });
 
-const listItems = (items, toggleHandler, deleteHandler) => {
+const listItems = (items = [], toggleHandler, deleteHandler) => {
   return items.map((item, index) => {
     return (
       <ListItem key={item.id}>
@@ -79,17 +79,19 @@ const listItems = (items, toggleHandler, deleteHandler) => {
   });
 }
 
-const ExistingTodos = ({todos, toggle, deleteOne}) => {
-  return (
-    <List>{listItems(todos, toggle, deleteOne)}</List>
-  );
+class ExistingTodos extends React.Component {
+  render () {
+    const {todos, toggle, deleteOne} = this.props;
+
+    return <List>{listItems(todos, toggle, deleteOne)}</List>;
+  }
 };
 
 const hoc = compose(
-  toggleReactor,
-  deleteReactor,
+  withRPCRedux('toggle'),
+  withRPCRedux('deleteOne'),
   connect((state) => {
-    switch (state.activeFilter) {
+    switch (state.filter) {
       case 'All':
         return {todos: all(state)}
       case 'Active':
